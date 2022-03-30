@@ -1,5 +1,7 @@
 package nl.novi.familiytree;
 
+import java.util.List;
+
 public class Person {
 
     private String name;
@@ -9,10 +11,9 @@ public class Person {
     private int age;
     private String mother;
     private String father;
-    private int siblings;
-    private int children;
-    private int pets;
-    private int grandChildren;
+    private List<Sibling> siblings;
+    private List<Child> children;
+    private List<Pet> pets;
 
     Person(String name, String lastName, int age, String sex) {
         this.name = name;
@@ -45,7 +46,7 @@ public class Person {
 
     }
 
-    public int getGrandChildren(){
+    public List<GrandChild> getGrandChildren(){
         return grandChildren;
     }
 
@@ -105,27 +106,27 @@ public class Person {
         this.mother = mother;
     }
 
-    public int getSiblings() {
+    public List<Sibling> getSiblings() {
         return siblings;
     }
 
-    public void setSiblings(int siblings) {
+    public void setSiblings(List<Sibling> siblings) {
         this.siblings = siblings;
     }
 
-    public int getChildren() {
+    public List<Child> getChildren() {
         return children;
     }
 
-    public void setChildren(int children) {
+    public void setChildren(List<Child> children) {
         this.children = children;
     }
 
-    public int getPets() {
+    public List<Pet> getPets() {
         return pets;
     }
 
-    public void setPets(int pets) {
+    public void setPets(List<Pet> pets) {
         this.pets = pets;
     }
 }
