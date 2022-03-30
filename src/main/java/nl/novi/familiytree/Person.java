@@ -1,5 +1,6 @@
 package nl.novi.familiytree;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Person {
@@ -11,18 +12,22 @@ public class Person {
     private int age;
     private String mother;
     private String father;
-    private List<Sibling> siblings;
-    private List<Child> children;
+    private List<Person> siblings = new ArrayList<>();
+    private List<Person> children = new ArrayList<>();
     private List<Pet> pets;
 
-    Person(String name, String lastName, int age, String sex) {
+    public Person(){
+
+    }
+
+    public Person(String name, String lastName, int age, String sex) {
         this.name = name;
         this.lastName = lastName;
         this.age = age;
         this.sex = sex;
     }
 
-    Person(String name, String middleName, String lastName, int age, String sex) {
+    public Person(String name, String middleName, String lastName, int age, String sex) {
         this.name = name;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -46,16 +51,21 @@ public class Person {
 
     }
 
-    public List<GrandChild> getGrandChildren(){
-        return grandChildren;
+    private boolean isFirstCharUpperCase(String name){
+        return Character.isUpperCase(name.codePointAt(0));
     }
+
 
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (isFirstCharUpperCase(name)) {
+            this.name = name;
+        } else {
+            this.name = name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
+        }
     }
 
     public String getMiddleName() {
@@ -71,7 +81,11 @@ public class Person {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        if (isFirstCharUpperCase(lastName)) {
+            this.lastName = lastName;
+        } else {
+            this.lastName = lastName.substring(0, 1).toUpperCase() + lastName.substring(1).toLowerCase();
+        }
     }
 
     public String getSex() {
@@ -106,19 +120,19 @@ public class Person {
         this.mother = mother;
     }
 
-    public List<Sibling> getSiblings() {
+    public List<Person> getSiblings() {
         return siblings;
     }
 
-    public void setSiblings(List<Sibling> siblings) {
+    public void setSiblings(List<Person> siblings) {
         this.siblings = siblings;
     }
 
-    public List<Child> getChildren() {
+    public List<Person> getChildren() {
         return children;
     }
 
-    public void setChildren(List<Child> children) {
+    public void setChildren(List<Person> children) {
         this.children = children;
     }
 
